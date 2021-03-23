@@ -106,12 +106,8 @@ var params = {
   loadFile : function() { 
     document.getElementById('myInput').click();
   },
-  playFile : function() {
-    play(null)
-  }
 };
 gui.add(params, 'loadFile').name('Load music file');
-gui.add(params, 'playFile').name('Play sample');
 
 // render loop
 const onAnimationFrameHandler = (timeStamp) => {

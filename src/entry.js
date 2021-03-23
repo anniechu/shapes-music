@@ -15,7 +15,7 @@ import { GUI } from 'three/examples/jsm/libs/dat.gui.module.js';
 import Square from './objects/Square.js';
 import Triangle from './objects/Triangle.js';
 import Circle from './objects/Circle.js';
-import music from './textures/kasbo.mp3';
+import music from './music/keshi.mp3';
 import './style.css';
 
 var camera;
@@ -24,6 +24,7 @@ var dataArray;
 var played = false;
 var rotate = false;
 var zooming = false;
+var loaded = false;
 var songLabel;
 var audio;
 
@@ -36,13 +37,14 @@ function loadFileObject(fileObj, loadedCallback)
 
 function play(evt) {
   if (played) {
-    return
+    audio.pause()
   }
   if (evt) {
     audio = new Audio(evt.target.result)
+    loaded = true;
+    songLabel.textContent = ''
   } else {
-    audio = new Audio(music)
-    songLabel.textContent = 'ihsdfafkdlasjl'
+    audio = new Audio(music);
   }
   var context = new AudioContext();
   var src = context.createMediaElementSource(audio);
@@ -131,7 +133,7 @@ const onAnimationFrameHandler = (timeStamp) => {
     camera.zoom -= 0.5;
     camera.updateProjectionMatrix();
   }
-  if (typeof document.getElementById("myInput").files[0] !== 'undefined') {
+  if (typeof document.getElementById("myInput").files[0] !== 'undefined' && !loaded) {
     loadFileObject(document.getElementById("myInput").files[0], play)
   }
   window.requestAnimationFrame(onAnimationFrameHandler);
@@ -166,7 +168,10 @@ zoomLabel.textContent = 'Press X to zoom'
 document.documentElement.appendChild( zoomLabel )
 songLabel = document.createElement('song')
 songLabel.id = 'song'
+songLabel.textContent = 'blue - keshi, Jai Wolf Remix - Jai Wolf'
 document.documentElement.appendChild( songLabel )
 
 window.addEventListener('keydown', onKeyDown, false)
 window.addEventListener('keyup', onKeyUp, false)
+
+play()

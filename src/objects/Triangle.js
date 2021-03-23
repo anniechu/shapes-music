@@ -39,7 +39,7 @@ export default class Triangle extends Group {
 
   }
 
-  update(dataArray, rotate, timeStamp) {
+  update(dataArray, rotate) {
     this.rotation.y += 0.01;
     var start = 0;
     var end = dataArray.length - 1

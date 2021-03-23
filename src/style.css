@@ -1,4 +1,4 @@
-#rotate {
+#play {
 	position: absolute;
 	top: 10px;
 	width: 100%;
@@ -7,9 +7,18 @@
 	display:block;
     color:white;
 }
-#zoom {
+#rotate {
 	position: absolute;
 	top: 30px;
+	width: 100%;
+	text-align: left;
+	z-index: 100;
+	display:block;
+    color:white;
+}
+#zoom {
+	position: absolute;
+	top: 50px;
 	width: 100%;
 	text-align: left;
 	z-index: 100;

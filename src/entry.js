@@ -58,7 +58,10 @@ function play(evt) {
 }
 
 var onKeyDown = function(e) {
-  if (e.code == 'KeyZ') {
+  if (e.code == 'KeyP') {
+    play()
+  }
+  else if (e.code == 'KeyZ') {
     rotate = true;
   } else if (e.code == 'KeyX' && played) {
     zooming = true;
@@ -154,6 +157,10 @@ var element = document.createElement('input')
 element.type = 'file'
 element.id = 'myInput'
 document.documentElement.appendChild( element )
+var playLabel = document.createElement('play')
+playLabel.id = 'play'
+playLabel.textContent = 'Press P to play!'
+document.documentElement.appendChild( playLabel )
 var rotateLabel = document.createElement('rotate')
 rotateLabel.id = 'rotate'
 rotateLabel.textContent = 'Hold Z to rotate'
@@ -169,5 +176,3 @@ document.documentElement.appendChild( songLabel )
 
 window.addEventListener('keydown', onKeyDown, false)
 window.addEventListener('keyup', onKeyUp, false)
-
-play()
